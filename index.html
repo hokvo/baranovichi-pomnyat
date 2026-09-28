@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Барановичи помнят</title>
+<link rel="stylesheet" href="lib/leaflet.css">
+<style>
+:root{--bg:#e9e7e3;--ink:#231f1a;--muted:#6b6258;--red:#9b1c1c;--card:#f7f6f4;--line:#cfccc6}
+*{box-sizing:border-box}
+body{margin:0;font-family:Georgia,"Times New Roman",serif;background:var(--bg);color:var(--ink);line-height:1.6}
+a{color:var(--red)}
+header{position:sticky;top:0;z-index:1100;background:#1b1714;color:#f4efe6;display:flex;justify-content:space-between;align-items:center;padding:12px 24px;flex-wrap:wrap;gap:8px}
+header b{letter-spacing:.08em}
+nav a{color:#f4efe6;text-decoration:none;margin-left:18px;font-size:15px}
+nav a:hover{color:#ffb4a8}
+.hero{min-height:80vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:60px 16px;
+ background:linear-gradient(rgba(20,16,12,.72),rgba(20,16,12,.85)),url(img/hero.jpg) center/cover,#2a241f;color:#f4efe6}
+.hero h1{font-size:clamp(34px,6vw,64px);margin:0 0 12px}
+.hero p{max-width:640px;font-size:19px;opacity:.9}
+.flame{font-size:54px}
+.btn{display:inline-block;margin-top:22px;padding:12px 26px;background:var(--red);color:#fff;border:0;border-radius:4px;font:inherit;cursor:pointer;text-decoration:none}
+.btn:hover{background:#b82424}
+section{max-width:1100px;margin:0 auto;padding:70px 16px}
+h2{font-size:34px;margin:0 0 8px}h2:after{content:"";display:block;width:48px;height:2px;background:var(--red);margin-top:10px}
+.lead{color:var(--muted);margin-bottom:30px}
+.timeline{border-left:3px solid var(--line);padding-left:26px}
+.ev{position:relative;margin-bottom:28px}
+.ev:before{content:"";position:absolute;left:-34px;top:6px;width:13px;height:13px;border-radius:50%;background:var(--red)}
+.ev h3{margin:0;color:var(--red)}
+#map{height:520px;border:1px solid var(--line);border-radius:6px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;margin-top:24px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;cursor:pointer;transition:transform .2s}
+.card:hover{transform:translateY(-4px)}
+.ph{height:150px;background:#3a322b center/cover;display:flex;align-items:flex-end;padding:8px;color:#fff;font-size:13px}
+.card div.t{padding:12px 14px}
+.card h3{margin:0 0 4px;font-size:18px}
+.card small{color:var(--muted)}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.65);display:none;align-items:center;justify-content:center;z-index:2000;padding:16px}
+.modal.on{display:flex}
+.box{background:var(--card);max-width:720px;width:100%;max-height:90vh;overflow:auto;border-radius:6px}
+.box .ph{height:380px;background-size:contain;background-repeat:no-repeat;background-color:#1b1714}
+.box .in{padding:22px 26px}
+.close{float:right;font-size:28px;background:none;border:0;cursor:pointer}
+.women{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.num{height:220px;display:flex;align-items:center;justify-content:center;background:#2a241f;color:#9b1c1c;font-size:110px;font-weight:bold}
+.quote{background:#1b1714;color:#f4efe6;padding:40px;text-align:center;font-size:22px;font-style:italic}
+footer{text-align:center;padding:30px;color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+<header><b>БАРАНОВИЧИ ПОМНЯТ</b>
+<nav><a href="#history">История</a><a href="#map-s">Карта памяти</a><a href="#women">Женское лицо войны</a><a href="#gen">Связь поколений</a></nav></header>
+
+<div class="hero">
+ <div class="flame">🕯</div>
+ <h1>Связь поколений: мы помним</h1>
+ <p>Места памяти города Барановичи. 85 лет назад, 22 июня 1941 года, началась Великая Отечественная война. Мы собрали истории улиц и мемориалов нашего города, чтобы память передавалась дальше.</p>
+ <a class="btn" href="#map-s">Открыть карту памяти</a>
+</div>
+
+<section id="history">
+ <h2>Барановичи в годы войны</h2>
+ <p class="lead">Коротко о главных событиях.</p>
+ <div class="timeline">
+  <div class="ev"><h3>22 июня 1941</h3><p>Нападение Германии на СССР. Уже в первые дни войны город и железнодорожный узел подвергаются бомбардировкам.</p></div>
+  <div class="ev"><h3>27 июня 1941</h3><p>Барановичи оккупированы немецкими войсками. Начинаются три года оккупации.</p></div>
+  <div class="ev"><h3>1941–1942</h3><p>В городе создаётся гетто. Тысячи мирных жителей еврейской национальности уничтожены в ходе массовых акций.</p></div>
+  <div class="ev"><h3>1942–1944</h3><p>Недалеко от города действует лагерь смерти Колдычево — один из крупнейших на территории Беларуси. В городе и районе работают подпольщики и партизаны.</p></div>
+  <div class="ev"><h3>8 июля 1944</h3><p>В ходе операции «Багратион» войска 1-го Белорусского фронта освобождают Барановичи.</p></div>
+ </div>
+</section>
+
+<section id="map-s">
+ <h2>Карта памяти</h2>
+ <p class="lead">Шесть мест, связанных с войной. Нажмите на метку или карточку, чтобы узнать подробнее.</p>
+ <div id="map"></div>
+ <div class="cards" id="cards"></div>
+</section>
+
+<div class="quote">«Никто не забыт, ничто не забыто»</div>
+
+<section id="women">
+ <h2>Женское лицо войны</h2>
+ <p class="lead">2026 год объявлен в Беларуси Годом белорусской женщины.</p>
+ <div class="women">
+  <div class="card"><div class="ph" style="background-image:url(img/w1.jpg);height:220px"></div><div class="t"><h3>На фронте</h3><p>Санинструкторы, связистки, зенитчицы, лётчицы. Девушки уходили на фронт добровольцами и выносили раненых с поля боя.</p></div></div>
+  <div class="card"><div class="ph" style="background-image:url(img/w2.jpg);height:220px;background-position:center 30%"></div><div class="t"><h3>В подполье и в партизанах</h3><p>Женщины были разведчицами и связными, переносили листовки и оружие, укрывали раненых, рискуя жизнью всей семьи.</p></div></div>
+  <div class="card"><div class="ph" style="background-image:url(img/w3.jpg);height:220px"></div><div class="t"><h3>В тылу</h3><p>Работали за мужчин на заводах и в полях, растили детей, после освобождения восстанавливали разрушенный город.</p></div></div>
+ </div>
+</section>
+
+<section id="gen">
+ <h2>Связь поколений</h2>
+ <p class="lead">Память живёт, пока о ней рассказывают.</p>
+ <p>Этот сайт создан учащимися, которые родились через 60 лет после Победы. Мы не видели войну, но знаем о ней от бабушек, прадедушек, из архивов и музеев. Приходите к местам памяти, приносите цветы, расспрашивайте старших о своей семье — и запишите эти истории, пока есть кому их рассказать.</p>
+ <a class="btn" href="#map-s">Пройти маршрут памяти</a>
+</section>
+
+<footer>Конкурс «ПАТРИОТ.by» · номинация «Связь поколений: мы помним» · Барановичи, 2026</footer>
+
+<div class="modal" id="modal"><div class="box"><div class="ph" id="m-ph"></div><div class="in">
+ <button class="close" onclick="closeM()">×</button><h2 id="m-t"></h2><p><small id="m-a"></small></p><div id="m-d"></div></div></div></div>
+
+<script src="lib/leaflet.js"></script>
+<script>
+var places=[
+ {t:"Памятник партизанам и подпольщикам",a:"сквер у площади Ленина",c:[53.126884,26.004323],img:"img/p1.jpg",
+  d:"<p>Мемориал в сквере на улице Чкалова посвящён партизанам и подпольщикам Барановичского края. На бронзовых плитах — имена и названия отрядов, боровшихся с оккупантами в 1941–1944 годах.</p><p>Подпольщики собирали разведданные, распространяли листовки, устраивали диверсии на железной дороге. Многие из них погибли в застенках гестапо и в лагере Колдычево.</p>"},
+ {t:"Мемориальный комплекс «Колдычево»",a:"около д. Колдычево, Барановичский район",c:[53.317751,26.039541],img:"img/p2.jpg",
+  d:"<p>В 1942–1944 годах здесь находился один из крупнейших нацистских лагерей смерти на территории Беларуси. По данным исследователей, в нём погибли около 22 тысяч человек: военнопленные, партизаны, подпольщики, мирные жители.</p><p>Сегодня на месте лагеря — мемориал с арками и памятными досками.</p>"},
+ {t:"«Зелёный мост» — память жертвам гетто",a:"ул. Промышленная, район «Зелёного моста»",c:[53.160750,26.023745],img:"img/p3.jpg",
+  d:"<p>Надпись на мемориальной доске: «Тут у раёне „Зялёнага маста“ у 1942 г. былі зверскі закатаваны 3 400 яўрэяў Баранавіцкага гета».</p><p>Доска установлена на средства белорусской еврейской общины и международных фондов.</p>"},
+ {t:"Камень памяти узникам гетто",a:"перекрёсток ул. Грицевца и Царюка (место главных ворот гетто)",c:[53.129703,26.013093],img:"img/p5.jpg",
+  d:"<p>Надпись на памятном камне: «У 1941–1942 гг. у горадзе знаходзілася яўрэйскае гета, ахвярамі якога сталі 12 тысяч грамадзян».</p><p>Колючая проволока на плите — символ несвободы и гибели тысяч мирных жителей города.</p>"},
+ {t:"Вокзал — железнодорожный узел",a:"вокзал Барановичи-Центральные",c:[53.132346,25.993803],img:"img/p4.jpg",
+  d:"<p>Барановичи — крупный железнодорожный узел, поэтому с первых дней войны город бомбили. В годы оккупации через станцию шли немецкие эшелоны к фронту, а подпольщики и партизаны устраивали диверсии на путях.</p><p>Сегодня это современный вокзал, но история города по-прежнему связана с железной дорогой.</p>"},
+ {t:"Паровоз-памятник",a:"въезд в город, трасса М1 (Новомышский сельсовет)",c:[53.164780,25.875219],img:"img/p6.jpg",pos:"center 80%",
+  d:"<p>Паровоз на постаменте — символ города железнодорожников. В годы войны железнодорожники Барановичей работали под постоянными бомбёжками, а в оккупации многие из них ушли в подполье и помогали партизанам.</p>"}
+];
+var cards=document.getElementById("cards"),map=null,online=true;
+try{
+ online=navigator.onLine!==false;
+ map=L.map("map",{crs:online?L.CRS.EPSG3395:L.CRS.EPSG3857,minZoom:online?10:11,maxZoom:online?18:15,maxBounds:online?null:[[53.08,25.83],[53.35,26.18]]}).setView([53.2,25.98],10);map.attributionControl.setPrefix(false);
+ if(online){L.tileLayer("https://core-renderer-tiles.maps.yandex.net/tiles?l=map&x={x}&y={y}&z={z}&scale=1&lang=ru_RU",{attribution:"© Яндекс"}).addTo(map)}
+ else{L.tileLayer("tiles/{z}/{x}/{y}.jpg",{attribution:"Карта: © Esri, OpenStreetMap"}).addTo(map)}
+}catch(e){document.getElementById("map").innerHTML="<p style='padding:20px'>Для карты нужен интернет. Места перечислены ниже.</p>"}
+places.forEach(function(p,i){
+ if(map){L.marker(p.c).addTo(map).bindPopup("<b>"+p.t+"</b><br><a href='#' onclick='openM("+i+");return false'>Подробнее</a>")}
+ var el=document.createElement("div");el.className="card";
+ el.innerHTML="<div class='ph' style=\"background-image:url("+p.img+");background-position:"+(p.pos||"center")+"\">"+(i+1)+"</div><div class='t'><h3>"+p.t+"</h3><small>"+p.a+"</small></div>";
+ el.onclick=function(){openM(i)};cards.appendChild(el);
+});
+if(map)map.fitBounds(places.map(function(p){return p.c}),{padding:[40,40]});
+function openM(i){var p=places[i];
+ document.getElementById("m-t").textContent=p.t;document.getElementById("m-a").textContent=p.a;
+ document.getElementById("m-d").innerHTML=p.d;document.getElementById("m-ph").style.backgroundImage="url("+p.img+")";
+ document.getElementById("modal").classList.add("on");
+ if(map)map.setView(p.c,online?16:(p.c[0]>53.15||p.c[1]<25.95?14:15));}
+function closeM(){document.getElementById("modal").classList.remove("on")}
+document.getElementById("modal").onclick=function(e){if(e.target===this)closeM()};
+</script>
+</body>
+</html>
