@@ -64,12 +64,12 @@ header{padding:10px 24px}
 .band span{font-size:28px;opacity:.9}
 h2{text-transform:uppercase;font-size:28px}
 .hcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
-.hc{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:14px;display:flex;flex-direction:column}
+.hc{min-width:0;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:14px;display:flex;flex-direction:column}
 .hc .pic{height:230px;background:#ddd center 12%/cover;border-radius:3px;margin-bottom:12px;filter:sepia(.25)}
-.hc h3{margin:0;color:var(--red);font-size:20px;line-height:1.2}
+.hc h3{margin:0;color:var(--red);font-size:18px;line-height:1.2;overflow-wrap:anywhere;hyphens:auto}
 .hc .yr{font-size:14px;margin:4px 0 8px}
 .hc p{font-size:14px;color:var(--muted);margin:0 0 12px;flex:1;line-height:1.45}
-.hc .ft{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:10px;font-size:13px;gap:8px}
+.hc .ft{display:flex;flex-direction:column;align-items:flex-start;border-top:1px solid var(--line);padding-top:10px;font-size:13px;gap:8px}
 .hc .ft span{color:var(--ink)}.hc .ft a{color:var(--red);text-decoration:none;white-space:nowrap;cursor:pointer}.hc .ft a:hover{text-decoration:underline}
 @media(max-width:800px){.hero{grid-template-columns:1fr}.hero-img{min-height:260px;background:url(img/hero.jpg) center/cover}.hero-txt{padding:40px 16px}.band{grid-template-columns:1fr 1fr}.band div{border:0;padding-left:0}}
 </style>
