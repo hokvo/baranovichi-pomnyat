@@ -29,10 +29,11 @@ h2{font-size:34px;margin:0 0 8px}h2:after{content:"";display:block;width:48px;he
 .ev:before{content:"";position:absolute;left:-34px;top:6px;width:13px;height:13px;border-radius:50%;background:var(--red)}
 .ev h3{margin:0;color:var(--red)}
 #map{height:520px;border:1px solid var(--line);border-radius:6px}
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;margin-top:24px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:18px;margin-top:24px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;cursor:pointer;transition:transform .2s}
 .card:hover{transform:translateY(-4px)}
 .ph{height:150px;background:#3a322b center/cover;display:flex;align-items:flex-end;padding:8px;color:#fff;font-size:13px}
+#cards .ph{height:260px}
 .card div.t{padding:12px 14px}
 .card h3{margin:0 0 4px;font-size:18px}
 .card small{color:var(--muted)}
@@ -105,15 +106,15 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:14px}
 <script src="lib/leaflet.js"></script>
 <script>
 var places=[
- {t:"Улица Надежды Крупской",a:"район Старого парка, центр города",c:[53.129802,26.025398],img:"img/s1.jpg",pos:"center 20%",
+ {t:"Улица Надежды Крупской",a:"район Старого парка, центр города",c:[53.129802,26.025398],img:"img/s1.jpg",pos:"center 12%",
   d:"<p><b>Надежда Константиновна Крупская (1869–1939)</b> — педагог, одна из создателей советской системы образования. Она выступала за то, чтобы учиться могли все дети, организовывала библиотеки и школы для взрослых, стояла у истоков пионерской организации.</p>"},
- {t:"Улица Антонины Керко",a:"район Дубово",c:[53.136766,26.095843],img:"img/s2.jpg",pos:"center 20%",
+ {t:"Улица Антонины Керко",a:"район Дубово",c:[53.136766,26.095843],img:"img/s2.jpg",pos:"center 12%",
   d:"<p><b>Антонина Степановна Керко (1925–2010)</b> — Герой Социалистического Труда (1971). Её юность пришлась на годы войны, а после Победы она всю жизнь посвятила работе в лёгкой промышленности и восстановлению страны.</p>"},
- {t:"Улица Лизы Чайкиной",a:"рядом с улицей Крупской",c:[53.124712,26.021373],img:"img/s3.jpg",pos:"center 20%",
+ {t:"Улица Лизы Чайкиной",a:"рядом с улицей Крупской",c:[53.124712,26.021373],img:"img/s3.jpg",pos:"center 12%",
   d:"<p><b>Елизавета Ивановна Чайкина (1918–1941)</b> — комсомолка, партизанская разведчица. Осенью 1941 года её схватили фашисты. Несмотря на пытки, она не выдала товарищей и была расстреляна.</p><p>В 1942 году Лизе Чайкиной посмертно присвоено звание Героя Советского Союза.</p>"},
- {t:"Улица Розы Люксембург",a:"Восточный микрорайон",c:[53.127446,26.079162],img:"img/s4.jpg",pos:"center 20%",
+ {t:"Улица Розы Люксембург",a:"Восточный микрорайон",c:[53.127446,26.079162],img:"img/s4.jpg",pos:"center 12%",
   d:"<p><b>Роза Люксембург (1871–1919)</b> — общественный деятель, выступавшая против войны и за права рабочих. Она уроженка Российской империи. В 1919 году была убита в Берлине.</p>"},
- {t:"Улица Зои Космодемьянской",a:"Южный микрорайон",c:[53.119065,26.029620],img:"img/s5.jpg",pos:"center 20%",
+ {t:"Улица Зои Космодемьянской",a:"Южный микрорайон",c:[53.119065,26.029620],img:"img/s5.jpg",pos:"center 12%",
   d:"<p><b>Зоя Анатольевна Космодемьянская (1923–1941)</b> — партизанка-разведчица. В ноябре 1941 года под Москвой её схватили фашисты. После пыток она была казнена в деревне Петрищево, но так и не назвала своего настоящего имени.</p><p>Зоя стала первой женщиной, удостоенной звания Героя Советского Союза в годы Великой Отечественной войны.</p>"}
 ];
 var cards=document.getElementById("cards"),map=null,online=true;
