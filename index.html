@@ -21,7 +21,7 @@ nav a:hover{color:#ffb4a8}
 .flame{font-size:54px}
 .btn{display:inline-block;margin-top:22px;padding:12px 26px;background:var(--red);color:#fff;border:0;border-radius:4px;font:inherit;cursor:pointer;text-decoration:none}
 .btn:hover{background:#b82424}
-section{max-width:1100px;margin:0 auto;padding:70px 16px}
+section{scroll-margin-top:60px;max-width:1100px;margin:0 auto;padding:70px 16px}
 h2{font-size:34px;margin:0 0 8px}h2:after{content:"";display:block;width:48px;height:2px;background:var(--red);margin-top:10px}
 .lead{color:var(--muted);margin-bottom:30px}
 .timeline{border-left:3px solid var(--line);padding-left:26px}
@@ -47,18 +47,58 @@ h2{font-size:34px;margin:0 0 8px}h2:after{content:"";display:block;width:48px;he
 .num{height:220px;display:flex;align-items:center;justify-content:center;background:#2a241f;color:#9b1c1c;font-size:110px;font-weight:bold}
 .quote{background:#1b1714;color:#f4efe6;padding:40px;text-align:center;font-size:22px;font-style:italic}
 footer{text-align:center;padding:30px;color:var(--muted);font-size:14px}
+
+header{padding:10px 24px}
+.logo{display:flex;align-items:center;gap:10px;color:#f4efe6;text-decoration:none}
+.logo span{display:flex;flex-direction:column;line-height:1.15}.logo b{letter-spacing:.1em}.logo small{font-size:12px;opacity:.75}
+.hero{min-height:auto;display:grid;grid-template-columns:1fr 1.1fr;align-items:stretch;text-align:left;padding:0;background:var(--card);color:var(--ink)}
+.hero-txt{padding:70px 40px 70px max(24px,calc((100vw - 1100px)/2 + 16px));display:flex;flex-direction:column;justify-content:center}
+.hero h1{font-size:clamp(34px,5vw,60px);line-height:1.05;text-transform:uppercase;margin:0}
+.hero h1 span{display:block}.hero h1 em{display:block;font-style:normal;color:var(--red)}
+.orn{display:flex;align-items:center;gap:10px;color:#c9a9a9;margin:18px 0;max-width:300px}.orn i{flex:1;height:1px;background:#c9b9b0}
+.hero p{max-width:440px;font-size:17px;opacity:1;color:var(--muted)}
+.hero .btn{align-self:flex-start}
+.hero-img{min-height:420px;background:linear-gradient(90deg,var(--card),rgba(0,0,0,0) 30%),url(img/hero.jpg) center/cover}
+.band{background:var(--red);color:#fff;display:grid;grid-template-columns:repeat(4,1fr);padding:22px max(16px,calc((100vw - 1100px)/2 + 16px));gap:10px;font-size:14px;line-height:1.35}
+.band div{display:flex;align-items:center;gap:12px;border-left:1px solid rgba(255,255,255,.35);padding-left:16px}.band div:first-child{border:0;padding-left:0}
+.band span{font-size:28px;opacity:.9}
+h2{text-transform:uppercase;font-size:28px}
+.hcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+.hc{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:14px;display:flex;flex-direction:column}
+.hc .pic{height:230px;background:#ddd center 12%/cover;border-radius:3px;margin-bottom:12px;filter:sepia(.25)}
+.hc h3{margin:0;color:var(--red);font-size:20px;line-height:1.2}
+.hc .yr{font-size:14px;margin:4px 0 8px}
+.hc p{font-size:14px;color:var(--muted);margin:0 0 12px;flex:1;line-height:1.45}
+.hc .ft{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:10px;font-size:13px;gap:8px}
+.hc .ft span{color:var(--ink)}.hc .ft a{color:var(--red);text-decoration:none;white-space:nowrap;cursor:pointer}.hc .ft a:hover{text-decoration:underline}
+@media(max-width:800px){.hero{grid-template-columns:1fr}.hero-img{min-height:260px;background:url(img/hero.jpg) center/cover}.hero-txt{padding:40px 16px}.band{grid-template-columns:1fr 1fr}.band div{border:0;padding-left:0}}
 </style>
 </head>
 <body>
-<header><b>БАРАНОВИЧИ ПОМНЯТ</b>
+<header><a class="logo" href="#top"><svg width="30" height="36" viewBox="0 0 30 36" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 2v5M11 7h8l1 6H10zM9 13h12v21H9zM3 22h6v12H3zM21 22h6v12h-6zM13 34v-7h4v7M12.5 17h5v4h-5z"/></svg><span><b>БАРАНОВИЧИ</b><small>город, где помнят</small></span></a>
 <nav><a href="#history">История</a><a href="#map-s">Карта памяти</a><a href="#women">Женское лицо войны</a><a href="#gen">Связь поколений</a></nav></header>
 
-<div class="hero">
- <div class="flame">🕯</div>
- <h1>Связь поколений: мы помним</h1>
- <p>Места памяти города Барановичи. 85 лет назад, 22 июня 1941 года, началась Великая Отечественная война. Мы собрали истории улиц и мемориалов нашего города, чтобы память передавалась дальше.</p>
- <a class="btn" href="#map-s">Открыть карту памяти</a>
+<div class="hero" id="top">
+ <div class="hero-txt">
+  <h1><span>Связь поколений</span><em>Мы помним</em></h1>
+  <div class="orn"><i></i>★<i></i></div>
+  <p>К Году белорусской женщины и 85-летию начала Великой Отечественной войны. Их имена увековечены в названиях улиц города Барановичи.</p>
+  <a class="btn" href="#map-s">Открыть карту памяти →</a>
+ </div>
+ <div class="hero-img"></div>
 </div>
+<div class="band">
+ <div><span>☆</span>Подвиг, который<br>не забыт</div>
+ <div><span>♀</span>Истории, которые<br>вдохновляют</div>
+ <div><span>⌖</span>Улицы, которые<br>хранят память</div>
+ <div><span>❦</span>Память, которая<br>объединяет поколения</div>
+</div>
+
+<section id="heroes">
+ <h2>Пять героинь — пять улиц Барановичей</h2>
+ <p class="lead">В нашем городе есть улицы, названные в честь женщин, каждая из которых вписала своё имя в историю. Их судьбы — часть нашей памяти и нашей гордости.</p>
+ <div class="hcards" id="cards"></div>
+</section>
 
 <section id="history">
  <h2>Барановичи в годы войны</h2>
@@ -74,9 +114,8 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:14px}
 
 <section id="map-s">
  <h2>Карта памяти</h2>
- <p class="lead">Пять улиц Барановичей, названных в честь женщин, — к Году белорусской женщины. Нажмите на метку или карточку, чтобы узнать подробнее.</p>
+ <p class="lead">Пять улиц Барановичей, названных в честь женщин, — к Году белорусской женщины. Нажмите на метку, чтобы узнать подробнее.</p>
  <div id="map"></div>
- <div class="cards" id="cards"></div>
 </section>
 
 <div class="quote">«Никто не забыт, ничто не забыто»</div>
@@ -106,15 +145,15 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:14px}
 <script src="lib/leaflet.js"></script>
 <script>
 var places=[
- {t:"Улица Надежды Крупской",a:"район Старого парка, центр города",c:[53.129802,26.025398],img:"img/s1.jpg",pos:"center 12%",
+ {t:"Улица Надежды Крупской",a:"район Старого парка, центр города",c:[53.129802,26.025398],img:"img/s1.jpg",n:"Надежда Крупская",y:"1869–1939",sh:"Педагог и просветитель, организатор народного образования, школ и библиотек.",st:"Улица Крупской",pos:"center 12%",
   d:"<p><b>Надежда Константиновна Крупская (1869–1939)</b> — педагог, одна из создателей советской системы образования. Она выступала за то, чтобы учиться могли все дети, организовывала библиотеки и школы для взрослых, стояла у истоков пионерской организации.</p>"},
- {t:"Улица Антонины Керко",a:"район Дубово",c:[53.136766,26.095843],img:"img/s2.jpg",pos:"center 12%",
+ {t:"Улица Антонины Керко",a:"район Дубово",c:[53.136766,26.095843],img:"img/s2.jpg",n:"Антонина Керко",y:"1925–2010",sh:"Герой Социалистического Труда. Юность — в годы войны, вся жизнь — в труде ради восстановления страны.",st:"Улица Керко",pos:"center 12%",
   d:"<p><b>Антонина Степановна Керко (1925–2010)</b> — Герой Социалистического Труда (1971). Её юность пришлась на годы войны, а после Победы она всю жизнь посвятила работе в лёгкой промышленности и восстановлению страны.</p>"},
- {t:"Улица Лизы Чайкиной",a:"рядом с улицей Крупской",c:[53.124712,26.021373],img:"img/s3.jpg",pos:"center 12%",
+ {t:"Улица Лизы Чайкиной",a:"рядом с улицей Крупской",c:[53.124712,26.021373],img:"img/s3.jpg",n:"Лиза Чайкина",y:"1918–1941",sh:"Партизанская разведчица. Схвачена фашистами, не выдала товарищей. Герой Советского Союза.",st:"Улица Чайкиной",pos:"center 12%",
   d:"<p><b>Елизавета Ивановна Чайкина (1918–1941)</b> — комсомолка, партизанская разведчица. Осенью 1941 года её схватили фашисты. Несмотря на пытки, она не выдала товарищей и была расстреляна.</p><p>В 1942 году Лизе Чайкиной посмертно присвоено звание Героя Советского Союза.</p>"},
- {t:"Улица Розы Люксембург",a:"Восточный микрорайон",c:[53.127446,26.079162],img:"img/s4.jpg",pos:"center 12%",
+ {t:"Улица Розы Люксембург",a:"Восточный микрорайон",c:[53.127446,26.079162],img:"img/s4.jpg",n:"Роза Люксембург",y:"1871–1919",sh:"Общественный деятель, выступавшая против войны и за права трудящихся.",st:"Улица Люксембург",pos:"center 12%",
   d:"<p><b>Роза Люксембург (1871–1919)</b> — общественный деятель, выступавшая против войны и за права рабочих. Она уроженка Российской империи. В 1919 году была убита в Берлине.</p>"},
- {t:"Улица Зои Космодемьянской",a:"Южный микрорайон",c:[53.119065,26.029620],img:"img/s5.jpg",pos:"center 12%",
+ {t:"Улица Зои Космодемьянской",a:"Южный микрорайон",c:[53.119065,26.029620],img:"img/s5.jpg",n:"Зоя Космодемьянская",y:"1923–1941",sh:"Партизанка. Погибла, не выдав товарищей. Первая женщина — Герой Советского Союза в годы войны.",st:"Улица Космодемьянской",pos:"center 12%",
   d:"<p><b>Зоя Анатольевна Космодемьянская (1923–1941)</b> — партизанка-разведчица. В ноябре 1941 года под Москвой её схватили фашисты. После пыток она была казнена в деревне Петрищево, но так и не назвала своего настоящего имени.</p><p>Зоя стала первой женщиной, удостоенной звания Героя Советского Союза в годы Великой Отечественной войны.</p>"}
 ];
 var cards=document.getElementById("cards"),map=null,online=true;
@@ -124,12 +163,15 @@ try{
  if(online){L.tileLayer("https://core-renderer-tiles.maps.yandex.net/tiles?l=map&x={x}&y={y}&z={z}&scale=1&lang=ru_RU",{attribution:"© Яндекс"}).addTo(map)}
  else{L.tileLayer("tiles/{z}/{x}/{y}.jpg",{attribution:"Карта: © Esri, OpenStreetMap"}).addTo(map)}
 }catch(e){document.getElementById("map").innerHTML="<p style='padding:20px'>Для карты нужен интернет. Места перечислены ниже.</p>"}
+var markers=[];
 places.forEach(function(p,i){
- if(map){L.marker(p.c).addTo(map).bindPopup("<b>"+p.t+"</b><br><a href='#' onclick='openM("+i+");return false'>Подробнее</a>")}
- var el=document.createElement("div");el.className="card";
- el.innerHTML="<div class='ph' style=\"background-image:url("+p.img+");background-position:"+(p.pos||"center")+"\">"+(i+1)+"</div><div class='t'><h3>"+p.t+"</h3><small>"+p.a+"</small></div>";
- el.onclick=function(){openM(i)};cards.appendChild(el);
+ if(map){markers[i]=L.marker(p.c).addTo(map).bindPopup("<b>"+p.t+"</b><br><small>"+p.a+"</small><br><a href='#' onclick='openM("+i+");return false'>Подробнее</a>")}
+ var el=document.createElement("div");el.className="hc";
+ el.innerHTML="<div class='pic' style=\"background-image:url("+p.img+")\"></div><h3>"+p.n+"</h3><div class='yr'>"+p.y+"</div><p>"+p.sh+"</p><div class='ft'><span>⌖ "+p.st+"</span><a onclick='goTo("+i+")'>Узнать больше →</a></div>";
+ cards.appendChild(el);
 });
+function goTo(i){document.getElementById("map-s").scrollIntoView({behavior:"smooth"});
+ if(map){setTimeout(function(){map.setView(places[i].c,online?16:(places[i].c[0]>53.15||places[i].c[1]<25.95?14:15));markers[i].openPopup()},500)}else{openM(i)}}
 if(map)map.fitBounds(places.map(function(p){return p.c}),{padding:[40,40]});
 function openM(i){var p=places[i];
  document.getElementById("m-t").textContent=p.t;document.getElementById("m-a").textContent=p.a;
