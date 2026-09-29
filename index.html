@@ -167,7 +167,7 @@ var markers=[];
 places.forEach(function(p,i){
  if(map){markers[i]=L.marker(p.c).addTo(map).bindPopup("<b>"+p.t+"</b><br><small>"+p.a+"</small><br><a href='#' onclick='openM("+i+");return false'>Подробнее</a>")}
  var el=document.createElement("div");el.className="hc";
- el.innerHTML="<div class='pic' style=\"background-image:url("+p.img+")\"></div><h3>"+p.n+"</h3><div class='yr'>"+p.y+"</div><p>"+p.sh+"</p><div class='ft'><span>⌖ "+p.st+"</span><a onclick='goTo("+i+")'>Узнать больше →</a></div>";
+ el.innerHTML="<div class='pic' style=\"background-image:url("+p.img+")\"></div><h3>"+p.n+"</h3><div class='yr'>"+p.y+"</div><p>"+p.sh+"</p><div class='ft'><span>⌖ "+p.st+"</span><a onclick='goTo("+i+")'>Посмотреть на карте →</a></div>";
  cards.appendChild(el);
 });
 function goTo(i){document.getElementById("map-s").scrollIntoView({behavior:"smooth"});
