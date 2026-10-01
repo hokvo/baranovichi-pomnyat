@@ -72,6 +72,13 @@ h2{text-transform:uppercase;font-size:28px}
 .hc .ft{display:flex;flex-direction:column;align-items:flex-start;border-top:1px solid var(--line);padding-top:10px;font-size:13px;gap:8px}
 .hc .ft span{color:var(--ink)}.hc .ft a{color:var(--red);text-decoration:none;white-space:nowrap;cursor:pointer}.hc .ft a:hover{text-decoration:underline}
 @media(max-width:800px){.hero{grid-template-columns:1fr}.hero-img{min-height:260px;background:url(img/hero2.jpg) center/cover}.hero-txt{padding:40px 16px}.band{grid-template-columns:1fr 1fr}.band div{border:0;padding-left:0}}
+.mwrap{position:relative;overflow:hidden;background:#1b1714;height:380px}
+.mwrap .ph{height:100%}
+.modal.on .mwrap .ph{animation:alive 9s ease-in-out infinite alternate}
+@keyframes alive{0%{transform:scale(1) translate(0,0);filter:sepia(.15) brightness(.95)}50%{transform:scale(1.06) translate(-1%,-1.5%);filter:sepia(.25) brightness(1.03)}100%{transform:scale(1.1) translate(1%,-2.5%);filter:sepia(.15) brightness(.97)}}
+.mwrap:after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 90px 30px rgba(0,0,0,.55)}
+#m-v{display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#1b1714}
+@media (prefers-reduced-motion:reduce){.modal.on .mwrap .ph{animation:none}}
 </style>
 </head>
 <body>
@@ -139,7 +146,7 @@ h2{text-transform:uppercase;font-size:28px}
 
 <footer>Конкурс «ПАТРИОТ.by» · номинация «Связь поколений: мы помним» · Барановичи, 2026</footer>
 
-<div class="modal" id="modal"><div class="box"><div class="ph" id="m-ph"></div><div class="in">
+<div class="modal" id="modal"><div class="box"><div class="mwrap"><div class="ph" id="m-ph"></div><video id="m-v" muted loop playsinline></video></div><div class="in">
  <button class="close" onclick="closeM()">×</button><h2 id="m-t"></h2><p><small id="m-a"></small></p><div id="m-d"></div></div></div></div>
 
 <script src="lib/leaflet.js"></script>
@@ -176,9 +183,10 @@ if(map)map.fitBounds(places.map(function(p){return p.c}),{padding:[40,40]});
 function openM(i){var p=places[i];
  document.getElementById("m-t").textContent=p.t;document.getElementById("m-a").textContent=p.a;
  document.getElementById("m-d").innerHTML=p.d;document.getElementById("m-ph").style.backgroundImage="url("+p.img+")";
+ var v=document.getElementById("m-v");if(p.video){v.src=p.video;v.style.display="block";v.play()}else{v.pause();v.removeAttribute("src");v.style.display="none"}
  document.getElementById("modal").classList.add("on");
  if(map)map.setView(p.c,online?16:(p.c[0]>53.15||p.c[1]<25.95?14:15));}
-function closeM(){document.getElementById("modal").classList.remove("on")}
+function closeM(){document.getElementById("modal").classList.remove("on");document.getElementById("m-v").pause()}
 document.getElementById("modal").onclick=function(e){if(e.target===this)closeM()};
 </script>
 </body>
